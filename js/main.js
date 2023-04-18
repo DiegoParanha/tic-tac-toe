@@ -1,12 +1,12 @@
 /*----- constants -----*/
-//1.1
+
 const SYMBOLS = {
     'null': 'white',
     '1': 'teal',
     '-1': 'red'
   };
   
-  //1.2
+
   const winningCombos = [
     [0, 4, 8],
     [6, 4, 2],
@@ -19,7 +19,7 @@ const SYMBOLS = {
   ];
   
   /*----- state variables -----*/
-  // 2.1, 2.2, 2.3
+
   let board;
   let turn;
   let winner;
@@ -34,11 +34,8 @@ const SYMBOLS = {
   
   
   /*----- functions -----*/
-  // 4.1
   init();
-  
-  
-  // 3.1, 4.1.2, 4.1.3
+
   function init() {
   board = [null,null,null,null,null,null,null,null,null];
     turn = 1;
@@ -46,7 +43,6 @@ const SYMBOLS = {
     render();
   }
   
-  // 5.1.1, 5.1.2, 5.2, 5.3, 5.4, 5.5
   function handleDrop(evt) {
     const colIdx = parseInt(evt.target.id.replace('c', ''));
     if (isNaN(colIdx) || board[colIdx] || winner) return;
@@ -56,7 +52,6 @@ const SYMBOLS = {
     render();
   }
   
-  // 5.6.1, 5.6.2, 5.6.3, 5.6.4, 5.7.1
   function getWinner() {
     for (let i = 0; i < winningCombos.length; i++) {
       if (Math.abs(board[0] + board[4] + board[8]) === 3) return board[0];
@@ -73,14 +68,12 @@ const SYMBOLS = {
   }
   
   
-  // 5.8, 6.1
   function render() {
     renderBoard();
     renderMessage();
     resetGameBtn.disabled = !winner;
   }
   
-  // 4.2.1, 4.2.1.1, 4.2.1.1.2, 4.3.1.1.3
   function renderBoard() {
     board.forEach(function(colVal, colIdx){
         const colId = document.getElementById(`c${colIdx}`);
@@ -89,7 +82,7 @@ const SYMBOLS = {
       });
     }
   
-  // 4.2.2.1, 4.2.2.2, 4.2.2.3
+
   function renderMessage() {
     if (winner === 'T') {
       messageEl.innerText = "It's a Tie!!!";
